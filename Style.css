@@ -78,6 +78,7 @@ body {
     position: absolute;
     left: 10px;
     top: 10px;
+    z-index: 5;
 }
 
 #ibutton:hover {
@@ -102,6 +103,8 @@ body {
     column-gap: 10px;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    z-index: 5;
 
 }
 
