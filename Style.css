@@ -1,0 +1,201 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background-color: #c1c1a4;
+    overflow: hidden;
+    max-height: 100vh;
+}
+
+#HitBackBox {
+    height: 25px;
+    width: 100px;
+    background-color: black;
+    position: absolute;
+    bottom: 0px;
+    border-radius: 10px;
+    z-index: 2;
+    transition: left 0.1s linear;
+}
+
+#BounceBall {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, rgb(205, 196, 196), blue);
+    border: 2px solid none;
+    position: absolute;
+    box-shadow:
+        inset -5px -5px 15px rgba(0, 0, 0, 0.3),
+        5px 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1;
+}
+
+#Score {
+    height: 400px;
+    width: 400px;
+    /* background-color: aqua; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 0;
+    top: 150px;
+    left: 200px;
+    font-size: 250px;
+    color: #434331;
+    transform-style: preserve-3d;
+    perspective: 600px;
+}
+
+#Scorecntr {
+    transform: translateZ(0px);
+}
+
+@keyframes aageao {
+    from {
+        transform: translateZ(0px);
+    }
+
+    to {
+        transform: translateZ(200px);
+    }
+}
+
+#ibutton {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-image: url(info.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+#ibutton:hover {
+    height: 32px;
+    width: 32px;
+}
+
+@keyframes Shake {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.1;
+    }
+}
+
+#instructions {
+    background-color: #dfdfdf;
+    display: none;
+    grid-template-columns: auto;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media only screen and (max-width: 575.98px) {
+    body {
+        height: 100vh;
+        background-color: #c1c1a4;
+        overflow: hidden;
+    }
+
+    #instructions {
+        height: 195px;
+        width: 250px;
+        /* background-color: aqua; */
+        position: relative;
+        top: 40px;
+        left: 40px;
+        padding-left: 20px;
+    }
+    #Score{
+        height: 300px;
+        width: 300px;
+    }
+}
+
+/* Small devices (phones, 576px and up) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    #instructions {
+        height: 160px;
+        width: 380px;
+        /* background-color: aqua; */
+        position: relative;
+        top: 40px;
+        left: 40px;
+        padding-left: 20px;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    #instructions {
+        height: 180px;
+        width: 450px;
+        /* background-color: aqua; */
+        position: relative;
+        top: 40px;
+        left: 40px;
+        padding-left: 20px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+    #instructions {
+        height: 200px;
+        width: 502px;
+        /* background-color: aqua; */
+        position: relative;
+        top: 40px;
+        left: 40px;
+        padding-left: 20px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #instructions {
+        height: 180px;
+        width: 550px;
+        /* background-color: aqua; */
+        position: relative;
+        top: 40px;
+        left: 40px;
+        font-size: 20px;
+        padding-left: 25px;
+    }
+}
+
+button {
+    height: 60px;
+    width: 200px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    background-image: url(repeat.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    padding-right: 50px;
+    cursor: pointer;
+}
