@@ -74,7 +74,7 @@ function Reset() {
     setTimeout(() => {
         TheBall.style.animation = "none";
         HitSpeed = 10;
-        Ballx = 150;
+        Ballx = 250;
         Bally = 150;
         BallxSpeed = 7;
         BallySpeed = 5;
@@ -85,8 +85,8 @@ function Reset() {
 }
 
 //Moving The Ball Here and There
-let Ballx = 50;
-let Bally = 50;
+let Ballx = 250;
+let Bally = 150;
 let BallxSpeed = 7;
 let BallySpeed = 5;
 let BallSize = 30;
@@ -197,41 +197,40 @@ document.addEventListener('mouseup', (e) => {
 })
 
 
-let ShowIns1 = false;
+let ShowIns = false;
 ibutton.addEventListener('click', () => {
-    if (!ShowIns1) {
+    if (!ShowIns) {
         Ins.style.display = "grid";
-        ShowIns1 = true;
+        ShowIns = true;
     }
     else {
         Ins.style.display = "none";
-        ShowIns1 = false;
+        ShowIns = false;
     }
 })
-let ShowIns2 = false;
-ibutton.addEventListener('tochstart', () => {
-    if (!ShowIns2) {
+
+ibutton.addEventListener('touchstart', () => {
+    if (!ShowIns) {
         Ins.style.display = "grid";
-        ShowIns2 = true;
+        ShowIns = true;
     }
     else {
         Ins.style.display = "none";
-        ShowIns2 = false;
+        ShowIns = false;
     }
 },{passive: false})
 
 function ResetAll() {
     HitSpeed = 12;
-    Ballx = 50;
-    Bally = 50;
+    Ballx = 250;
+    Bally = 150;
     BallxSpeed = 7;
     BallySpeed = 5;
     BallSize = 30;
     Bounce = false;
     ScoreCntr = 0;
     IsDraggingPhones = false;
-    ShowIns2 = false;
-    ShowIns1 = false;
+    ShowIns = false;
     ScoreBoard.style.zIndex = "0";
     Score.style.animation = "none";
     Score.style.transform = "translateZ(0px)";
