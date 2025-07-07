@@ -8,16 +8,16 @@ const ScreenWidth = window.innerWidth;
 const ScreenHeight = window.innerHeight;
 console.log(ScreenWidth);
 console.log(ScreenHeight);
-if(ScreenWidth<=575.98){
+if (ScreenWidth <= 575.98) {
     ScoreBoard.style.left = (ScreenWidth / 2) - 150 + "px";
 }
-else{
+else {
     ScoreBoard.style.left = (ScreenWidth / 2) - 200 + "px";
 
 }
 ScoreBoard.style.top = (ScreenHeight / 2) - 200 + "px";
 Again.style.left = (ScreenWidth / 2) - 100 + "px";
-Again.style.top = (ScreenHeight)-100 + "px";
+Again.style.top = (ScreenHeight) - 100 + "px";
 Again.style.zIndex = 4;
 
 //Move HitBack Around
@@ -79,6 +79,7 @@ function Reset() {
         BallxSpeed = 7;
         BallySpeed = 5;
         BallSize = 30;
+        JustBouncd = false;
         TheBall.style.left = Ballx + "px";
         TheBall.style.top = Bally + "px";
     }, 400);
@@ -111,27 +112,30 @@ TheBall.addEventListener('click', () => {
     }
     Ins.style.display = "none";
 })
+let JustBouncd=false;
 function AnimateBall() {
     Ballx += BallxSpeed;
     Bally += BallySpeed;
     if (Bounce) {
-
+        Ins.style.display="none";
         if (Ballx + BallSize >= (ScreenWidth - 10) || Ballx <= 0) {
             BallxSpeed = -BallxSpeed;
         }
 
         if (Bally <= 0) {
             BallySpeed = -BallySpeed;
+            JustBouncd=false;
         }
-
-        if (Bally + BallSize >= (ScreenHeight - 27) &&
-            (Ballx + BallSize >= LeftHitMove && Ballx + BallSize <= LeftHitMove + 110)) {
+        if ((!JustBouncd)&&
+            Bally + BallSize >= (ScreenHeight - 23) &&
+            (Ballx + BallSize >= LeftHitMove-5 && Ballx + BallSize <= LeftHitMove + 95)) {
             BallySpeed = -BallySpeed;
             ScoreCntr++;
             Score.innerText = ScoreCntr;
+            JustBouncd=true;
         }
 
-        if (Bally + BallSize >= (ScreenHeight + 10)) {
+        if (Bally + BallSize >= (ScreenHeight)) {
             ScoreBoard.style.zIndex = "3";
             Score.style.animation = "aageao 2s linear";
             Score.style.transform = "translateZ(200px)";
@@ -199,26 +203,30 @@ document.addEventListener('mouseup', (e) => {
 
 let ShowIns = false;
 ibutton.addEventListener('click', () => {
-    if (!ShowIns) {
-        Ins.style.display = "grid";
-        ShowIns = true;
-    }
-    else {
-        Ins.style.display = "none";
-        ShowIns = false;
+    if(!Bounce){
+        if (!ShowIns) {
+            Ins.style.display = "grid";
+            ShowIns = true;
+        }
+        else {
+            Ins.style.display = "none";
+            ShowIns = false;
+        }
     }
 })
 
 ibutton.addEventListener('touchstart', () => {
-    if (!ShowIns) {
-        Ins.style.display = "grid";
-        ShowIns = true;
+    if(!Bounce){
+        if (!ShowIns) {
+            Ins.style.display = "grid";
+            ShowIns = true;
+        }
+        else {
+            Ins.style.display = "none";
+            ShowIns = false;
+        }
     }
-    else {
-        Ins.style.display = "none";
-        ShowIns = false;
-    }
-},{passive: false})
+}, { passive: false })
 
 function ResetAll() {
     HitSpeed = 12;
@@ -227,7 +235,7 @@ function ResetAll() {
     BallxSpeed = 7;
     BallySpeed = 5;
     BallSize = 30;
-    Bounce = false;
+    JustBouncd = false;
     ScoreCntr = 0;
     IsDraggingPhones = false;
     ShowIns = false;
@@ -236,11 +244,19 @@ function ResetAll() {
     Score.style.transform = "translateZ(0px)";
     Score.style.color = "#434331";
     Again.style.display = "none";
-    Score.innerText="";
+    Score.innerText = "";
 }
 Again.addEventListener("click", () => {
     ResetAll();
+    Bounce = true;
+    setTimeout(() => {
+        AnimateBall();
+    }, 500);
 })
 Again.addEventListener("touchstart", () => {
     ResetAll();
+    Bounce = true;
+    setTimeout(() => {
+        AnimateBall();
+    }, 500);
 })
